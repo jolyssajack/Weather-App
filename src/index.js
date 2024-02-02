@@ -1,9 +1,18 @@
 function displayTemperature(response) {
-  let temperatureElement = document.querySelector("#current-temperature");
+  let temperatureElement = document.querySelector(".current-temperature-value");
+  let tempIcon = document.querySelector(".current-temperature-icon");
+  let tempDescript = document.querySelector(".weather-description");
+  let wind = document.querySelector(".current-wind-value");
+  let humidity = document.querySelector(".current-humidity-value");
   let temperature = Math.round(response.data.temperature.current);
   let cityElement = document.querySelector("#current-city");
+
   cityElement.innerHTML = response.data.city;
-  temperatureElement.innerHTML = temperature;
+  temperatureElement.innerHTML = `${temperature}<span class="current-temperature-unit">°C</span>`;
+  tempIcon.innerHTML = `<img src="${response.data.condition.icon_url}" class="current-temperature-icon" />`;
+  tempDescript.innerHTML = response.data.condition.description;
+  wind.innerHTML = `${response.data.wind.speed}km/h`;
+  humidity.innerHTML = `${response.data.temperature.humidity}%`;
 }
 
 function search(event) {
@@ -21,6 +30,8 @@ function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
   let day = date.getDay();
+  let greeting = document.querySelector(".greeting");
+  let backColour = document.querySelector("body");
 
   if (minutes < 10) {
     minutes = `0${minutes}`;
@@ -28,6 +39,21 @@ function formatDate(date) {
 
   if (hours < 10) {
     hours = `0${hours}`;
+  }
+
+  if (hours >= 5 && hours < 12) {
+    greeting.innerHTML = "Good Morning";
+    backColour.style.backgroundImage =
+      "radial-gradient(at 40% 20%,hsla(199, 100%, 74%, 1) 0px,transparent 50%)";
+    console.log("Good morning!");
+  } else if (hours >= 12 && hours < 18) {
+    greeting.innerHTML = "Good Afternoon";
+    backColour.style.backgroundImage =
+      "radial-gradient(at 40% 20%, hsla(15,100%,50%,1) 0px, transparent 50%), radial-gradient(at 80% 0%, hsla(206,100%,20%,0) 0px, transparent 50%)";
+  } else {
+    greeting.innerHTML = "Good Evening";
+    backColour.style.backgroundImage =
+      "radial-gradient(at 40% 20%, hsla(225,33%,21%,1) 0px, transparent 50%)";
   }
 
   let days = [
@@ -41,13 +67,13 @@ function formatDate(date) {
   ];
 
   let formattedDay = days[day];
-  return `${formattedDay} ${hours}:${minutes}`;
+  return `${formattedDay}, ${hours}:${minutes}`;
 }
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-let currentDateELement = document.querySelector("#current-date");
+let currentDateELement = document.querySelector(".current-date");
 let currentDate = new Date();
 
 currentDateELement.innerHTML = formatDate(currentDate);
