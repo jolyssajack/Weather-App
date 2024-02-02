@@ -24,40 +24,58 @@
             class="search-input"
             id="search-input"
           />
-          <input type="submit" value="Search" class="search-button" />
+          <button type="submit" class="search-btn">
+            <img src="images/search.png" />
+          </button>
         </form>
       </header>
       <main>
-        <div class="current-weather">
-          <div>
-            <h1 class="current-city" id="current-city">Paris</h1>
-            <p class="current-details">
-              <span id="current-date"></span>, moderate rain <br />
-              Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
-            </p>
-          </div>
-          <div class="current-temperature">
-            <span class="current-temperature-icon">☀️</span
-            ><span class="current-temperature-value" id="current-temperature"
-              >24</span
-            ><span class="current-temperature-unit">°C</span>
-          </div>
+
+        <div>
+          <h1 class="current-city" id="current-city">Paris</h1>
+          <p class="current-date">
+            Thursday 2nd, <span class="current-time"> 8:00 A.M</span>
+          </p>
         </div>
+
+        <div class="current-temperature">
+          <p class="current-temperature-icon">☀️</p>
+          <span class="current-temperature-value" id="current-temperature"
+            >24</span
+          ><span class="current-temperature-unit">°C</span>
+          <p class="weather-description"> moderate rain</p>
+          <p class="greeting">Good Morning</p>
+        </div>
+
+
+            <div class="current-details">
+                <div class="current-wind-details">
+                    <i class="fa-solid fa-wind" style="color: #0a0a0a;"></i>
+                        <p>Wind</p>
+                        <p>2m/s</p>
+                </div> 
+
+                <div class="current-humidity-details">
+                    <i class="fa-solid fa-cloud" style="color: #000000;"></i>
+                        <p>Humidity</p>
+                        <p>87%</p>
+                </div>
+            </div>
       </main>
       <footer>
         <p>
           This project was coded by
-          <a href="https://github.com/jolyssajack" target="_blank">Jolyssa</a>
+          <a href="https://github.com/jolyssajack" target="_blank">Jolyssa Jack</a>
           and is
           <a
             href="https://github.com/jolyssajack/Weather-App/tree/main"
             target="_blank"
           >
-            on GitHub</a
+           open sourced on GitHub</a
           >
           and
           <a href="https://dapper-semolina-0f44df.netlify.app/" target="_blank"
-            >hosted on Netlify</a
+            >hosted on Netlify.</a
           >
         </p>
       </footer>
